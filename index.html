@@ -466,99 +466,6 @@
             margin-bottom: 10px;
             color: var(--primary);
         }
-
-        /* =========================
-   NEWS & UPDATES SECTION
-========================= */
-
-.news-section {
-    background: #ffffff;
-}
-
-.news-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
-    align-items: stretch;
-    margin-top: 50px;
-}
-
-.news-card {
-    background: #fff;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s ease;
-    border: 1px solid #f0f0f0;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-
-.news-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
-}
-
-.news-card img {
-    width: 100%;
-    height: 240px;
-    object-fit: cover;
-    display: block;
-}
-
-.news-content {
-    padding: 22px;
-    text-align: center;
-    flex-grow: 1;
-}
-
-.news-content h3 {
-    font-size: 1.3rem;
-    color: var(--primary);
-    margin-bottom: 12px;
-    font-weight: 700;
-}
-
-.news-content p {
-    font-size: 0.96rem;
-    color: var(--gray);
-    line-height: 1.6;
-}
-
-.registration-wrapper {
-    text-align: center;
-    margin-top: 45px;
-}
-
-.registration-btn {
-    display: inline-block;
-    background: var(--accent);
-    color: #fff;
-    padding: 14px 32px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
-
-.registration-btn:hover {
-    background: #e55a2b;
-    transform: translateY(-2px);
-}
-
-/* Responsive */
-@media (max-width: 992px) {
-    .news-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 768px) {
-    .news-grid {
-        grid-template-columns: 1fr;
-    }
-}
         
         /* Contact Section */
         .contact-content {
@@ -1118,77 +1025,271 @@
         </div>
     </section>
 
-<div class="news-grid">
-    
-<!-- News & Updates Section -->
+<!-- =========================
+     NEWS & UPDATES SECTION
+========================= -->
 <section class="section news-section" id="news">
+
+    <style>
+        .news-section {
+            background: #f8f9fa;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .news-card {
+            background: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .news-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+        }
+
+        .news-image {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .news-image img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+            cursor: pointer;
+        }
+
+        .news-card:hover .news-image img {
+            transform: scale(1.05);
+        }
+
+        .download-overlay {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            background: rgba(0, 51, 102, 0.9);
+            color: #fff;
+            padding: 10px 16px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .news-card:hover .download-overlay {
+            opacity: 1;
+        }
+
+        .news-content {
+            padding: 25px;
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        .news-content h3 {
+            font-size: 1.35rem;
+            color: #003366;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .news-content p {
+            color: #6c757d;
+            font-size: 0.97rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background: #00a8e8;
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background: #003366;
+        }
+
+        .registration-wrapper {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .registration-wrapper h3 {
+            font-size: 1.6rem;
+            color: #003366;
+            margin-bottom: 15px;
+        }
+
+        .registration-wrapper p {
+            color: #6c757d;
+            margin-bottom: 25px;
+        }
+
+        .registration-btn {
+            display: inline-block;
+            background: #ff6b35;
+            color: #fff;
+            padding: 15px 35px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .registration-btn:hover {
+            background: #e55a2b;
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .news-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
     <div class="container">
 
+        <!-- Section Title -->
         <div class="section-title">
             <h2>News & Updates</h2>
             <p>
                 Stay informed with our latest training schedules, webinar sessions,
-                and upcoming industry events.
+                and upcoming engineering events.
             </p>
         </div>
-    <!-- Column 1 -->
-    <div class="news-card">
-        <a href="1.jpg" download>
-            <img src="2.jpg" alt="Training Calendar">
-        </a>
 
-        <div class="news-content">
-            <h3>Training Calendar</h3>
+        <!-- News Grid -->
+        <div class="news-grid">
+
+            <!-- Training Calendar -->
+            <div class="news-card">
+
+                <a href="2.jpg" download class="news-image">
+                    <img src="2.jpg" alt="Training Calendar">
+                    <div class="download-overlay">
+                        Download
+                    </div>
+                </a>
+
+                <div class="news-content">
+                    <h3>Training Calendar</h3>
+
+                    <p>
+                        Download the latest training schedule covering PLC,
+                        SCADA, industrial automation, and engineering programs.
+                    </p>
+
+                    <a href="2.jpg" download class="download-btn">
+                        Download Calendar
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- Webinars Calendar -->
+            <div class="news-card">
+
+                <a href="1.jpg" download class="news-image">
+                    <img src="1.jpg" alt="Webinars Calendar">
+                    <div class="download-overlay">
+                        Download
+                    </div>
+                </a>
+
+                <div class="news-content">
+                    <h3>Webinars Calendar</h3>
+
+                    <p>
+                        Access upcoming webinar sessions led by industry experts
+                        in automation, electrical systems, and smart technologies.
+                    </p>
+
+                    <a href="2.jpg" download class="download-btn">
+                        Download Calendar
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- Upcoming Events -->
+            <div class="news-card">
+
+                <a href="event-flyer.jpg" download class="news-image">
+                    <img src="event-flyer.jpg" alt="Upcoming Events">
+                    <div class="download-overlay">
+                        Download
+                    </div>
+                </a>
+
+                <div class="news-content">
+                    <h3>Upcoming Events</h3>
+
+                    <p>
+                        Explore exhibitions, workshops, conferences, and
+                        networking opportunities within the engineering sector.
+                    </p>
+
+                    <a href="event-flyer.jpg" download class="download-btn">
+                        Download Flyer
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Registration Section -->
+        <div class="registration-wrapper">
+
+            <h3>Training & Event Registration</h3>
+
             <p>
-                Access our updated technical training schedules and
-                professional engineering programs.
+                Register now to secure your place in our professional training
+                programs, webinars, and upcoming events.
             </p>
 
-            <a href="2.jpg" download class="btn">
-                Download Calendar
+            <a href="https://forms.gle/2Lw5WsZpMhQ86wbH9"
+               target="_blank"
+               class="registration-btn">
+
+               Register Here
+
             </a>
+
         </div>
+
     </div>
 
-    <!-- Column 2 -->
-    <div class="news-card">
-        <a href="1.jpg" download>
-            <img src="1.jpg" alt="Webinars Calendar">
-        </a>
-
-        <div class="news-content">
-            <h3>Webinars Calendar</h3>
-            <p>
-                Join our expert-led webinars covering automation,
-                electrical systems, and industrial technologies.
-            </p>
-
-            <a href="1.jpg" download class="btn">
-                Download Calendar
-            </a>
-        </div>
-    </div>
-
-    <!-- Column 3 -->
-    <div class="news-card">
-        <a href="event-flyer.jpg" download>
-            <img src="event-flyer.jpg" alt="Upcoming Events">
-        </a>
-
-        <div class="news-content">
-            <h3>Upcoming Events</h3>
-            <p>
-                Explore conferences, workshops, exhibitions, and networking
-                opportunities within the engineering industry.
-            </p>
-
-            <a href="event-flyer.jpg" download class="btn">
-                Download Events Flyer
-            </a>
-        </div>
-    </div>
-
-</div>
+</section>
     
     <!-- Contact Section -->
     <section class="section" id="contact">
